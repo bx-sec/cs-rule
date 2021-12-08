@@ -1,0 +1,26 @@
+id: fdc88d25-96fb-4b7c-9633-c11417fdbd4d
+meta:
+  author: phil
+  description: nil.
+  title: 可疑定时任务命令 
+and: true
+enabled: true
+rules:
+  EventID:
+    data:
+      - '1002'
+    type: string
+  Image:
+    data:
+      - '/bash'
+    type: endswith
+  CommandLine:
+    data:
+      - '\/dev\/tcp\/([^/]+)\/(\d*)'
+    type: regexp
+  ParentName:
+    data:
+      - 'crond'
+    type: string
+source: process
+system: linux
